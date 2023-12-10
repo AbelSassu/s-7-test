@@ -1,13 +1,3 @@
-const URL = "https://striveschool-api.herokuapp.com/api/product";
-const AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTczNGM3YWZlMDMxZTAwMTliYTE5MmEiLCJpYXQiOjE3MDIwNTUwMzQsImV4cCI6MTcwMzI2NDYzNH0.vzn_R-kQl1iy3UpLR-zoouiWF1EtzjUaogmXrHRxBKo";
-
-const auth_headers = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-};
-
 window.onload = () => loadProducts();
 
 async function submitProduct() {
@@ -35,12 +25,10 @@ async function loadProducts() {
     const products = await getProducts()
         .then((res) => res.json())
         .catch((er) => console.error(er));
-    console.log(products);
 
     function renderProducts() {
         productContainer.innerHTML = "";
         products.forEach((product) => {
-            const id = product._id;
             productContainer.innerHTML += createProductCard(product);
         });
     }
@@ -48,32 +36,29 @@ async function loadProducts() {
 }
 
 function createProductCard(product) {
-    const { _id, name, price, description, brand, imageUrl } = product;
-    const card = `<div class="lg:w-1/4 md:w-1/2 p-4 w-full bg-stone-500 shadow-lg rounded-lg h-fit">
-            <a class="block relative h-48 rounded overflow-hidden">
+    const { _id, name, price, brand, imageUrl } = product;
+    const card = `<div class="lg:w-1/5 md:w-1/2 p-4 w-full bg-stone-500 shadow-lg rounded-lg h-fit">
+            <div class=" h-48 rounded overflow-hidden">
               <img
                 alt="product image"
                 class=" object-center h-48 w-full block object-contain"
                 src="${imageUrl}"
               />
-            </a>
+            </div>
             <div class="mt-4">
               <h3 class=" text-xs tracking-widest title-font text-white mb-1">
                 ${brand}
               </h3>
-              <h2 class="text-white title-font text-lg font-medium">
+              <h2 class="text-white title-font text-lg font-medium mb-2">
                 ${name}
               </h2>
-              <div class="collapse mt-1 w-full border-0 rounded-none">
-                <input type="checkbox" class=" h-6"/> 
-                <div class="collapse-title font-medium p-0">
-                  Descrizione
-                </div>
-                <div class="collapse-content p-0"> 
-                <p class="text-white">${description}</p>
-                </div>
-              </div>
-              <p class="mt-1 text-white" onclick="viewProductDetails('${_id}')">${price}€</p>
+              
+              <a href="dettaglio.html?id=${_id}" class="text-green-600 font-bold inline-flex items-center">Vedi dettagli <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+            </a>
+              
+              <p class="mt-2 text-white">${price}€</p>
               <div id="edit-group-${_id}">
                 <button id="edit-btn-${_id}" class="btn mt-2 btn-sm" onclick="openEditModal(event)">Modifica</button>
                 <button id="delete-btn-${_id}" class="btn mt-2 btn-sm" onclick="deleteProductById(event)">Cancella</button>
@@ -146,54 +131,4 @@ function resetDialog() {
     if (form && confirmOperation("Confermi la modifica?")) {
         form.reset();
     }
-}
-//prove
-async function viewProductDetails(id) {
-    const product = await getProductById(id)
-        .then((res) => res.json())
-        .catch((er) => console.error(er));
-
-    // Salva il prodotto corrente in sessionStorage
-    sessionStorage.setItem("currentProduct", JSON.stringify(product));
-
-    // Reindirizza alla pagina di dettaglio del prodotto
-    window.location.href = "dettaglio.html";
-}
-
-function viewProductDetails(id) {
-    window.location.href = `dettaglio.html?id=${id}`;
-}
-// ------------------- CRUD OPERATIONS ------------------- //
-async function getProducts() {
-    return fetch(URL, {
-        method: "GET",
-        headers: auth_headers,
-    });
-}
-async function getProductById(id) {
-    return fetch(`${URL}/${id}`, {
-        method: "GET",
-        headers: auth_headers,
-    });
-}
-async function createProduct(data) {
-    return fetch(URL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: auth_headers,
-    });
-}
-
-async function updateProduct(id, data) {
-    return fetch(`${URL}/${id}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: auth_headers,
-    });
-}
-async function deleteProduct(id) {
-    return fetch(`${URL}/${id}`, {
-        method: "DELETE",
-        headers: auth_headers,
-    });
 }
