@@ -50,17 +50,11 @@ function showToast(toast) {
     }, 3000);
 }
 function onError(msg) {
-    showToast(`<div class="alert alert-info">
-                <span>${msg}</span>
-                </div>`);
+    showToast({ type: "info", msg });
 }
 
 function onSuccess(msg) {
-    showToast(
-        `<div class="alert alert-success">
-         <span>${msg}</span>
-        </div>`
-    );
+    showToast({ type: "success", msg });
 }
 
 function createProductCard(product) {

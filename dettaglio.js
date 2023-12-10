@@ -24,7 +24,7 @@ function createProductCard(product){
                 src="${imageUrl}"
               />
         </div>
-        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <div class="lg:w-1/2 w-full   lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">${brand}</h2>
         <h1 class="text-white text-3xl title-font font-medium mb-1">${name}</h1>
         <p class="leading-relaxed break-words mb-5">${description}</p>
