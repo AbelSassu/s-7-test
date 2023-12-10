@@ -1,119 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0" />
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
-              rel="stylesheet"
-              type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <meta
+            name="description"
+            content="Con Piccol le offerte piovono a catene! Smettila di mortificarti a casa, mortificati al Piccol!"
+        />
         <title>Piccol</title>
+        <link
+            rel="icon"
+            href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQORoOMwx4WFqgOyADoNPFz0f4pZnggq9aOOQ&usqp=CAU"
+            type="image/x-icon"
+        />
     </head>
 
     <body>
+        <body class="bg-stone-800 h-screen">
+        <section class='py-2 bg-[#1d294f] text-white text-center px-10'>
+        <p class='text-sm'>Sconti Natalizi: Sconti fino al 40% su Mario.</p>
+      </section>
+        <header class='shadow-lg py-4 px-4 sm:px-10 h-100 bg-stone-500 shadow dark:bg-gray-800 font-[sans-serif] min-h-[70px] relative'>
+            
+      <div class='flex flex-wrap items-center justify-between gap-5 '>
+        <a href="index.html" title="Home" class="lg:absolute max-lg:top-4 max-lg:left-10 max-sm:left-4 lg:top-2/4 lg:left-2/4 lg:-translate-x-1/2 lg:-translate-y-1/2"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQORoOMwx4WFqgOyADoNPFz0f4pZnggq9aOOQ&usqp=CAU" alt="logo" class='w-12 rounded-full' />
+        </a>
+        <div class='flex items-center ml-auto lg:order-1 '>
+          <button class='mr-6 font-semibold text-[15px] border-none outline-none'><a href='#' class='text-white hover:underline'>Login</a></button>
+          <button class='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-white'>Registrati</button>
+          <button class='lg:hidden ml-7'>
+            
+          </button>
+        </div>
+        <ul class='flex lg:space-x-5 max-lg:space-y-2 max-lg:block max-lg:w-full'>
+          <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'>
+            <a href='#'
+              class='lg:hover:text-orange-200 text-white max-lg:text-white block font-semibold text-[15px]'>Homepage</a>
+          </li>
+          <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='dettaglio.html'
+            class='lg:hover:text-orange-200 text-white block font-semibold text-[15px]'>Pagina Dettaglio</a>
+          </li>
+          <li class='max-lg:border-b max-lg:py-2 px-3 max-lg:rounded'><a href='index.html'
+            class='lg:hover:text-orange-200 text-white block font-semibold text-[15px]'>Backoffice</a>
+          </li>
+        </ul>
+      </div>
+    </header>
         <main class="w-screen h-100 bg-stone-800">
-            <h1 class="text-white text-center text-4xl sm:text-6xl py-10"> Al Piccol il risparmio è bello!</h1>
-            <button class="btn mx-auto block mb-4"
-                    onclick="my_modal_1.showModal()">
+            <h1 class="text-white text-center text-4xl sm:text-6xl py-10">
+                Al Piccol il risparmio è bello!
+            </h1>
+            <button
+                class="btn mx-auto block mb-4"
+                onclick="my_modal_1.showModal()"
+            >
                 Aggiungi prodotto
             </button>
-            <dialog id="my_modal_1"
-                    class="modal">
+            <dialog id="my_modal_1" class="modal">
                 <div class="modal-box">
                     <h3 class="font-bold text-lg">Aggiungi Prodotto</h3>
                     <div class="modal-action">
-                        <form action=""
-                              id="create-product-form"
-                              method="dialog"
-                              class="w-full flex flex-col gap-2">
-                            <div id="add-inputs-container"
-                                 class="flex flex-col gap-2">
-                                <input required
-                                       type="text"
-                                       placeholder="Nome"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Descrizione"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Brand"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="number"
-                                       placeholder="Prezzo"
-                                       min="0"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Url immagine"
-                                       class="input input-bordered w-full" />
+                        <form
+                            action=""
+                            id="create-product-form"
+                            method="dialog"
+                            class="w-full flex flex-col gap-2"
+                        >
+                            <div
+                                id="add-inputs-container"
+                                class="flex flex-col gap-2"
+                            >
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Nome"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Descrizione"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Brand"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="number"
+                                    placeholder="Prezzo"
+                                    min="0"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Url immagine"
+                                    class="input input-bordered w-full"
+                                />
                             </div>
                             <div class="flex gap-2 w-full">
-                                <button class="btn bg-success/75 hover:bg-success text-white w-1/2"
-                                        onclick="submitProduct()">
+                                <button
+                                    class="btn bg-success/75 hover:bg-success text-white w-1/2"
+                                    onclick="submitProduct()"
+                                >
                                     Aggiungi
                                 </button>
-                                <button class="btn bg-error/75 hover:bg-error text-white w-1/2"
-                                        onclick="resetDialog()">
+                                <button
+                                    class="btn bg-error/75 hover:bg-error text-white w-1/2"
+                                    onclick="resetDialog()"
+                                >
                                     Reset
                                 </button>
                             </div>
-                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                                    onclick="my_modal_1.close()">
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onclick="my_modal_1.close()"
+                            >
                                 ✕
                             </button>
                         </form>
                     </div>
                 </div>
             </dialog>
-            <dialog id="edit_modal"
-                    class="modal">
+            <dialog id="edit_modal" class="modal">
                 <div class="modal-box">
                     <h3 class="font-bold text-lg">Modifica Prodotto</h3>
                     <div class="modal-action">
-                        <form action=""
-                              id="create-product-form"
-                              method="dialog"
-                              class="w-full flex flex-col gap-2">
-                            <div id="edit-inputs-container"
-                                 class="flex flex-col gap-2">
-                                <input required
-                                       type="text"
-                                       placeholder="Nome"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Descrizione"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Brand"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="number"
-                                       placeholder="Prezzo"
-                                       min="0"
-                                       class="input input-bordered w-full" />
-                                <input required
-                                       type="text"
-                                       placeholder="Url immagine"
-                                       class="input input-bordered w-full" />
+                        <form
+                            action=""
+                            id="create-product-form"
+                            method="dialog"
+                            class="w-full flex flex-col gap-2"
+                        >
+                            <div
+                                id="edit-inputs-container"
+                                class="flex flex-col gap-2"
+                            >
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Nome"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Descrizione"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Brand"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="number"
+                                    placeholder="Prezzo"
+                                    min="0"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Url immagine"
+                                    class="input input-bordered w-full"
+                                />
                             </div>
                             <div class="flex gap-2 w-full">
-                                <button class="btn bg-success/75 hover:bg-success text-white w-1/2"
-                                        onclick="editProduct()">
+                                <button
+                                    class="btn bg-success/75 hover:bg-success text-white w-1/2"
+                                    onclick="editProduct()"
+                                >
                                     Modifica
                                 </button>
-                                <button class="btn bg-error/75 hover:bg-error text-white w-1/2"
-                                        onclick="resetDialog()">
+                                <button
+                                    class="btn bg-error/75 hover:bg-error text-white w-1/2"
+                                    onclick="resetDialog()"
+                                >
                                     Reset
                                 </button>
                             </div>
-                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                                    onclick="my_modal_1.close()">
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onclick="my_modal_1.close()"
+                            >
                                 ✕
                             </button>
                         </form>
@@ -122,14 +204,51 @@
             </dialog>
             <section class="text-gray-400 body-font py-8">
                 <div class="container px-5 mx-auto">
-                    <div id="product-container"
-                         class="flex flex-wrap gap-5 justify-center"></div>
+                    <div
+                        id="product-container"
+                        class="flex flex-wrap gap-5 justify-center"
+                    ></div>
                 </div>
             </section>
         </main>
+
+        <footer class="w-screen p-5 text-white h-100 bg-stone-800 shadow dark:bg-gray-800">
+            <div
+                class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+            >
+                <span
+                    class="text-sm text-white-500 sm:text-center dark:text-gray-400"
+                    >© 2023
+                    <a href="#" class="hover:underline"
+                        >Piccol™</a
+                    >. All Rights Reserved.
+                </span>
+                <ul
+                    class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+                >
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6"
+                            >About</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6"
+                            >Privacy Policy</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6"
+                            >Licensing</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
         <script src="main.js"></script>
         <script src="crud-operations.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
     </body>
-
 </html>
