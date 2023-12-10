@@ -15,7 +15,8 @@ async function submitProduct() {
         imageUrl,
     };
 
-    await createProduct(payload);
+    await createProduct(payload)
+    .then(() => onSuccess("Prodotto creato correttamente")).catch(() => onError("Errore creazione prodotto"));
     loadProducts();
 }
 
@@ -24,15 +25,42 @@ async function loadProducts() {
 
     const products = await getProducts()
         .then((res) => res.json())
-        .catch((er) => console.error(er));
+        .catch((er) => onError("Impossibile caricare i prodotti"));
 
-    function renderProducts() {
-        productContainer.innerHTML = "";
-        products.forEach((product) => {
-            productContainer.innerHTML += createProductCard(product);
-        });
+    productContainer.innerHTML = "";
+    products.forEach((product) => {
+        productContainer.insertAdjacentHTML(
+            "beforeend",
+            createProductCard(product)
+        );
+    });
+}
+
+function showToast(toast) {
+    const toastContainer = document.getElementById("toast-container");
+    if (toastContainer) {
+        toastContainer.insertAdjacentHTML(
+            `beforeend`,
+            `<div class="alert alert-${toast.type}" role="alert"> <span>${toast.msg}</span>
+    </div>`
+        );
     }
-    renderProducts();
+    setTimeout(() => {
+        toastContainer.innerHTML = "";
+    }, 3000);
+}
+function onError(msg) {
+    showToast(`<div class="alert alert-info">
+                <span>${msg}</span>
+                </div>`);
+}
+
+function onSuccess(msg) {
+    showToast(
+        `<div class="alert alert-success">
+         <span>${msg}</span>
+        </div>`
+    );
 }
 
 function createProductCard(product) {
@@ -53,7 +81,7 @@ function createProductCard(product) {
                 ${name}
               </h2>
               
-              <a href="dettaglio.html?id=${_id}" class="text-green-600 font-bold inline-flex items-center">Vedi dettagli <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <a href="dettaglio.html?id=${_id}" class="text-slate-300 font-bold inline-flex items-center">Vedi dettagli <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
             </a>
@@ -79,7 +107,7 @@ async function editProduct() {
         brand: brand.value,
         price: price.value,
         imageUrl: imageUrl.value,
-    });
+    }).then(() => onSuccess("Prodotto aggiornato correttamente")).catch(() => onError("Errore aggiornamento prodotto"));
     loadProducts();
 }
 function confirmOperation(msg) {
@@ -122,7 +150,9 @@ async function deleteProductById(e) {
     const btn = e.target;
     const id = btn.id.split("-").pop();
     if (confirmOperation(`Confermi l'eliminazione?`)) {
-        await deleteProduct(id);
+        await deleteProduct(id)
+            .then(() => onSuccess("Prodotto eliminato correttamente"))
+            .catch(() => onError("Errore cancellazione prodotto"));
         loadProducts();
     }
 }
