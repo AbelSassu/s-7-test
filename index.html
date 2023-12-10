@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <title>Silk Road 2.0</title>
+    </head>
+    <body>
+        <main class="w-screen h-screen bg-stone-800">
+            <h1 class="text-white text-center text-4xl sm:text-6xl py-10"> Benvenuto alla Silk Road 2.0</h1>
+            <button class="btn mx-auto block mb-4" onclick="my_modal_1.showModal()">
+                Aggiungi prodotto
+            </button>
+            <dialog id="my_modal_1" class="modal">
+                <div class="modal-box">
+                    <h3 class="font-bold text-lg">Aggiungi Prodotto</h3>
+                    <div class="modal-action">
+                        <form
+                            action=""
+                            id="create-product-form"
+                            method="dialog"
+                            class="w-full flex flex-col gap-2"
+                        >
+                            <div id="add-inputs-container" class="flex flex-col gap-2">
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Nome"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Descrizione"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Brand"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="number"
+                                    placeholder="Prezzo"
+                                    min="0"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Url immagine"
+                                    class="input input-bordered w-full"
+                                />
+                            </div>
+                            <div class="flex gap-2 w-full">
+                                <button
+                                    class="btn bg-success/75 hover:bg-success text-white w-1/2"
+                                    onclick="submitProduct()"
+                                >
+                                    Aggiungi
+                                </button>
+                                <button
+                                    class="btn bg-error/75 hover:bg-error text-white w-1/2"
+                                    onclick="resetDialog()"
+                                >
+                                    Reset
+                                </button>
+                            </div>
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onclick="my_modal_1.close()"
+                            >
+                                ✕
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+            <dialog id="edit_modal" class="modal">
+                <div class="modal-box">
+                    <h3 class="font-bold text-lg">Modifica Prodotto</h3>
+                    <div class="modal-action">
+                        <form
+                            action=""
+                            id="create-product-form"
+                            method="dialog"
+                            class="w-full flex flex-col gap-2"
+                        >
+                            <div id="edit-inputs-container" class="flex flex-col gap-2">
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Nome"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Descrizione"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Brand"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="number"
+                                    placeholder="Prezzo"
+                                    min="0"
+                                    class="input input-bordered w-full"
+                                />
+                                <input
+                                    required
+                                    type="text"
+                                    placeholder="Url immagine"
+                                    class="input input-bordered w-full"
+                                />
+                            </div>
+                            <div class="flex gap-2 w-full">
+                                <button
+                                    class="btn bg-success/75 hover:bg-success text-white w-1/2"
+                                    onclick="editProduct()"
+                                >
+                                    Modifica
+                                </button>
+                                <button
+                                    class="btn bg-error/75 hover:bg-error text-white w-1/2"
+                                    onclick="resetDialog()"
+                                >
+                                    Reset
+                                </button>
+                            </div>
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                onclick="my_modal_1.close()"
+                            >
+                                ✕
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+            <section class="text-gray-400 body-font py-8">
+                <div class="container px-5 mx-auto">
+                    <div
+                        id="product-container"
+                        class="flex flex-wrap gap-4 -m-4"
+                    ></div>
+                </div>
+            </section>
+        </main>
+        <script src="main.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </body>
+</html>
